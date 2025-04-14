@@ -19,9 +19,12 @@ export class SignalInputsComponent {
   edad = input(15);
   multiplicarEdad = computed(()=> this.edad() * 2)
 
-  //Tarea para la casa (Ver ejemplo)
-  deshabilitado = input(false, {transform:  (v: boolean | string) => ( typeof v === 'string' ? v === "" : v),});
 
   //Uso de el alias para un dato entrante enviado por el padre hacia una signal de el hijo
   edadHijo = input(0, {alias: 'edadEstudiante'});
+
+  //un poco de logica...
+  deshabilitado = input(false, {
+    transform: (value: boolean | string) => (typeof value === 'string' ) ? value === '' : value
+  })
 }
